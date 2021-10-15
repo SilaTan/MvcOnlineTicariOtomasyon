@@ -1,0 +1,87 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
+@model List<Kategori>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<script src="~/Web/dist/assets/demo/datatables-demo.js"></script>
+
+
+<main>
+    <div class="container-fluid">
+        <h1 class="mt-4">Kategori Tablosu</h1>
+
+
+        <div class="card mb-4">
+            <div class="card-header"><i class="fas fa-table mr-1"></i>DataTable Example</div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Kategori Ad</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Id</th>
+                                <th>Kategori Ad</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.KategoriID</td>
+                                    <td>@item.KategoriAd</td>
+                                    <td><a href="/Kategori/KategoriSil/@item.KategoriID" class="btn btn-danger">Sil</a></td>
+                                    <td><a href="/Kategori/KategoriGuncelle/@item.KategoriID" class="btn btn-success">Güncelle</a></td>
+                                    
+                                        
+                                    
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <button class="btn btn-primary" data-toggle="modal" data-target="#UyeOl">Yeni Kategori Ekle</button>
+                <div class="modal fade" id="UyeOl" tabindex="-1" role="dialog" aria-labelledby="">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+
+                            </div>
+                            <form method="post" action="/Kategori/KategoriEkle">
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label>
+                                            Kategori Adı
+                                            <input type="text" name="KategoriAd" class="form-control" />
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
+                                    <button type="submit" class="btn btn-primary">Kayıt Et</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+
+

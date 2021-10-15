@@ -1,0 +1,41 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Urun
+
+@{
+    ViewBag.Title = "UrunGuncelle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Ürün Güncelleme</h2>
+<br />
+@using (Html.BeginForm("UrunGuncelle", "Urun", FormMethod.Post)) { 
+    <div class="container-fluid">
+        @Html.HiddenFor(x=>x.UrunID)
+        @Html.Label("Urun Ad")
+        @Html.TextBoxFor(x => x.UrunAd, new { @class = "form-control" })
+        <br />
+        @Html.Label("Marka")
+        @Html.TextBoxFor(x => x.Marka, new { @class = "form-control" })
+        <br />
+        @Html.Label("Stok")
+        @Html.TextBoxFor(x => x.Stok, new { @class = "form-control" })
+        <br />
+        @Html.Label("Alış Fiyatı")
+        @Html.TextBoxFor(x => x.AlisFiyat, new { @class = "form-control" })
+        <br />
+        @Html.Label("Satış Fiyatı")
+        @Html.TextBoxFor(x => x.SatisFiyat, new { @class = "form-control" })
+        <br />
+        @Html.Label("Kategori")
+        @Html.DropDownListFor(x => x.KategoriID, (List<SelectListItem>)ViewBag.deger, new { @class = "form-control" })
+        <br />
+        @Html.Label("Görsel")
+        @Html.TextBoxFor(x => x.UrunGorsel, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-primary">Güncelle</button>
+    </div>
+}
+
+
+
+
+

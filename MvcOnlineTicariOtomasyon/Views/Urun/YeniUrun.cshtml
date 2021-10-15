@@ -1,0 +1,38 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Urun
+
+@{
+    ViewBag.Title = "YeniUrun";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Ürün Ekleme</h2>
+<br />
+<form class="form-group" method="post">
+    <div class="container-fluid">
+        @Html.Label("Urun Ad")
+        @Html.TextBoxFor(x => x.UrunAd, new { @class = "form-control" })
+        <br />
+        @Html.Label("Marka")
+        @Html.TextBoxFor(x => x.Marka, new { @class = "form-control" })
+        <br />
+        @Html.Label("Stok")
+        @Html.TextBoxFor(x => x.Stok, new { @class = "form-control" })
+        <br />
+        @Html.Label("Alış Fiyatı")
+        @Html.TextBoxFor(x => x.AlisFiyat, new { @class = "form-control" })
+        <br />
+        @Html.Label("Satış Fiyatı")
+        @Html.TextBoxFor(x => x.SatisFiyat, new { @class = "form-control" })
+        <br />
+        @Html.Label("Kategori")
+        @Html.DropDownListFor(x => x.KategoriID, (List<SelectListItem>)ViewBag.deger, new { @class = "form-control" })
+        <br />
+        @Html.Label("Görsel")
+        @Html.TextBoxFor(x => x.UrunGorsel, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-primary">Ekle</button>
+    </div>
+</form>
+
+
+
