@@ -1,0 +1,84 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
+@model List<Departman>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<script src="~/Web/dist/assets/demo/datatables-demo.js"></script>
+
+<main>
+    <div class="container-fluid">
+        <h1 class="mt-4">Departman Tablosu</h1>
+
+
+        <div class="card mb-4">
+            <div class="card-header"><i class="fas fa-table mr-1"></i>DataTable Example</div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Departman Ad</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                                <th>Detaylar</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Id</th>
+                                <th>Departman Ad</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                                <th>Detaylar</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.DepartmanID</td>
+                                    <td>@item.DepartmanAd</td>
+                                    <td><a href="/Departman/DepartmanSil/@item.DepartmanID" class="btn btn-danger">Sil</a></td>
+                                    <td><a href="/Departman/DepartmanGuncelle/@item.DepartmanID" class="btn btn-success">Güncelle</a></td>
+                                    <td><a href="/Departman/DepartmanDetay/@item.DepartmanID" class="btn btn-info">Detaylar</a></td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <button class="btn btn-primary" data-toggle="modal" data-target="#KayıtEt">Yeni Departman Ekle</button>
+                <div class="modal fade" id="KayıtEt" tabindex="-1" role="dialog" aria-labelledby="">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+
+                            </div>
+                            <form method="post" action="/Departman/DepartmanEkle">
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label>
+                                            Departman Adı : <input type="text" name="DepartmanAd" class="form-control" />
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
+                                    <button type="submit" class="btn btn-primary">Kayıt Et</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+

@@ -30,11 +30,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             c.SaveChanges();
             return RedirectToAction("Index");
         }
-        public ActionResult KategoriBul(int id)
-        {
-            var value = c.Kategoris.Find(id);           
-            return RedirectToAction("Index");
-        }
+        
         [HttpGet]
         public ActionResult KategoriGuncelle(int id)
         {

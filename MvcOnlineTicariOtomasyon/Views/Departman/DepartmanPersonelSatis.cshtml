@@ -1,0 +1,73 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
+@model List<SatisHareket>
+
+@{
+    ViewBag.Title = "DepartmanPersonelSatis";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<script src="~/Web/dist/assets/demo/datatables-demo.js"></script>
+
+
+<main>
+    <div class="container-fluid">
+        <h1 class="mt-4">Departman Tablosu</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Personel Adı: @ViewBag.prs</li>
+        </ol>
+
+        <div class="card mb-4">
+            <div class="card-header"><i class="fas fa-table mr-1"></i>DataTable Example</div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Ürün</th>
+                                <th>Cari</th>
+                                <th>Tarih</th>
+                                <th>Adet</th>
+                                <th>Fiyat</th>
+                                <th>Toplam</th>
+                                <th>Yazdır</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Id</th>
+                                <th>Ürün</th>
+                                <th>Cari</th>
+                                <th>Tarih</th>
+                                <th>Adet</th>
+                                <th>Fiyat</th>
+                                <th>Toplam</th>
+                                <th>Yazdır</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.SatisHareketID</td>
+                                    <td>@item.Urun.UrunAd </td>
+                                    <td>@item.Cari.CariAd @item.Cari.CariSoyad</td>
+                                    <td>@item.Tarih</td>
+                                    <td>@item.Adet</td>
+                                    <td>@item.Fiyat</td>
+                                    <td>@item.Toplam</td>
+                                    <td><a href="#" class="btn btn-default" style="background-color:dodgerblue">Yazdır</a></td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</main>
+
