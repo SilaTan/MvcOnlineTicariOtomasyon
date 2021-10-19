@@ -41,6 +41,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         {
             var value = c.Departmans.Find(p.DepartmanID);
             value.DepartmanAd = p.DepartmanAd;
+            value.DepartmanDurum = p.DepartmanDurum;
             c.SaveChanges();
             return RedirectToAction("Index");
         }

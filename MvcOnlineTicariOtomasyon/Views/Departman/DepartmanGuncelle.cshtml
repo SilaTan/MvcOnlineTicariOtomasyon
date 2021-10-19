@@ -14,10 +14,12 @@
         @Html.Label("Departman Adı")
         @Html.TextBoxFor(x => x.DepartmanAd, new { @class = "form-control" })
         <br />
-
+        @Html.Label("Departman Durumu")
+        @Html.CheckBoxFor(x => x.DepartmanDurum, new { @class = "form-control" })
+        <br />
         @*@Html.Label("Departman Durum")
-        @Html.TextBoxFor(x => x.DepartmanAd, new { @class = "form-control" })
-        <br />*@
+            @Html.TextBoxFor(x => x.DepartmanAd, new { @class = "form-control" })
+            <br />*@
         <button class="btn btn-info">Kaydet</button>
     </div>
 }
