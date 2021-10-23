@@ -1,0 +1,30 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Personel
+
+@{
+    ViewBag.Title = "PersonelGuncelle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Personel Güncelleme</h2>
+
+<br />
+@using (Html.BeginForm("PersonelGuncelle", "Personel", FormMethod.Post))
+{
+    <div class="container-fluid">
+        @Html.HiddenFor(x => x.PersonelID)
+        @Html.Label("Personel Adı")
+        @Html.TextBoxFor(x => x.PersonelAd, new { @class = "form-control" })
+        <br />
+        @Html.Label("Personel Soyadı")
+        @Html.TextBoxFor(x => x.PersonelSoyad, new { @class = "form-control" })
+        <br />
+        @Html.Label("Personel Görsel")
+        @Html.TextBoxFor(x => x.PersonelGorsel, new { @class = "form-control" })
+        <br />
+        @Html.Label("Departmanı")
+        @Html.DropDownListFor(x => x.DepartmanID, (List<SelectListItem>)ViewBag.deger, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-primary">Güncelle</button>
+    </div>
+}
+

@@ -1,0 +1,11 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
+@model List<Departman>
+
+<datalist id="browsers">
+    @foreach (var item in Model)
+    {
+        <option value="@item.DepartmanID">@item.DepartmanAd</option>
+    }
+
+
+</datalist>

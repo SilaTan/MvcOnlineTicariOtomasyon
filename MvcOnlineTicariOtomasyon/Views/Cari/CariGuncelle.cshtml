@@ -1,0 +1,39 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Cari
+
+@{
+    ViewBag.Title = "CariGuncelle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+
+
+
+<h2>Departman Güncelleme</h2>
+<br />
+@using (Html.BeginForm("CariGuncelle", "Cari", FormMethod.Post))
+{
+    <div class="container-fluid">
+        @Html.HiddenFor(x => x.CariID)
+
+        @Html.Label("Cari Adı")
+        @Html.TextBoxFor(x => x.CariAd, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.CariAd, "", new { @style = "color:red" })
+        <br />
+        @Html.Label("Cari Soyadı")
+        @Html.TextBoxFor(x => x.CariSoyad, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.CariSoyad, "", new { @style = "color:red" })
+        <br />
+        @Html.Label("Cari Mail")
+        @Html.TextBoxFor(x => x.CariMail, new { @class = "form-control" })
+        <br />
+        @Html.Label("Cari Şehir")
+        @Html.TextBoxFor(x => x.CariSehir, new { @class = "form-control" })
+        <br />
+        @Html.Label("Cari Durumu")
+        @Html.CheckBoxFor(x => x.CariDurum, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-info">Kaydet</button>
+    </div>
+}
+

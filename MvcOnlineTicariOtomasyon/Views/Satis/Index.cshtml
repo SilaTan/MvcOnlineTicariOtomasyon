@@ -1,5 +1,5 @@
 ﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
-@model List<Cari>
+@model List<SatisHareket>
 
 @{
     ViewBag.Title = "Index";
@@ -10,7 +10,7 @@
 
 <main>
     <div class="container-fluid">
-        <h1 class="mt-4">Cariler Tablosu</h1>
+        <h1 class="mt-4">Personel Tablosu</h1>
 
 
         <div class="card mb-4">
@@ -21,69 +21,71 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Cari Ad</th>
-                                <th>Cari Soyad</th>
-                                <th>Şehir</th>
-                                <th>Cari Mail</th>
-                                <th>Sil</th>
-                                <th>Güncelle</th>
-                                <th>Detaylar</th>
+                                <th>Ürün</th>
+                                <th>Personel</th>
+                                <th>Tarih</th>
+                                <th>Adet</th>
+                                <th>Fiyat</th>
+                                <th>Toplam</th>
+                                <th>Cari</th>
+
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
                                 <th>Id</th>
-                                <th>Cari Ad</th>
-                                <th>Cari Soyad</th>
-                                <th>Şehir</th>
-                                <th>Cari Mail</th>
-                                <th>Sil</th>
-                                <th>Güncelle</th>
-                                <th>Detaylar</th>
+                                <th>Ürün</th>
+                                <th>Personel</th>
+                                <th>Tarih</th>
+                                <th>Adet</th>
+                                <th>Fiyat</th>
+                                <th>Toplam</th>
+                                <th>Cari</th>
                             </tr>
                         </tfoot>
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td>@item.CariID</td>
-                                    <td>@item.CariAd</td>
-                                    <td>@item.CariSoyad</td>
-                                    <td>@item.CariSehir</td>
-                                    <td>@item.CariMail</td>
-                                    <td><a href="/Cari/CariSil/@item.CariID" class="btn btn-danger">Sil</a></td>
-                                    <td><a href="/Cari/CariGuncelle/@item.CariID" class="btn btn-success">Güncelle</a></td>
-                                    <td><a href="/Cari/CariSatısGecmis/@item.CariID" class="btn btn-info">Satış Geçmişi</a></td>
-                                </tr>
+                            <tr>
+                                <td>@item.SatisHareketID</td>
+                                <td>@item.Urun.UrunAd </td>
+                                <td>@item.Personel.PersonelAd @item.Personel.PersonelSoyad</td>
+                                <td>@item.Tarih</td>
+                                <td>@item.Adet</td>
+                                <td>@item.Fiyat</td>
+                                <td>@item.Toplam</td>
+                                <td>@item.Cari.CariAd @item.Cari.CariSoyad</td>
+                            </tr>
                             }
 
                         </tbody>
                     </table>
                 </div>
 
-                <button class="btn btn-primary" data-toggle="modal" data-target="#YeniCari">Yeni Cari Ekle</button>
-                <div class="modal fade" id="YeniCari" tabindex="-1" role="dialog" aria-labelledby="">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#KayıtEt">Yeni Personel Ekle</button>
+                <div class="modal fade" id="KayıtEt" tabindex="-1" role="dialog" aria-labelledby="">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
 
                             </div>
-                            <form method="post" action="/Cari/CariEkle">
+                            <form method="post" action="/Personel/PersonelEkle">
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <label>
-                                            Cari Adı : <input type="text" name="CariAd" class="form-control" />
+                                            Personel Adı : <input type="text" name="PersonelAd" class="form-control" />
                                         </label>
                                         <label>
-                                            Cari Soyad : <input type="text" name="CariSoyad" class="form-control" />
+                                            Personel Soyad : <input type="text" name="PersonelSoyad" class="form-control" />
                                         </label>
                                         <label>
-                                            Cari Şehir : <input type="text" name="CariSehir" class="form-control" />
+                                            Personel Görsel : <input type="text" name="PersonelGorsel" class="form-control" />
                                         </label>
                                         <label>
-                                            Cari Mail : <input type="text" name="CariMail" class="form-control" />
+                                            Personel Departman : <input type="text" name="DepartmanId" class="form-control" list="browsers" />
                                         </label>
+                                        @Html.Action("DepartmanListesi", "ParcalıGorunum")
                                     </div>
                                 </div>
                                 <div class="modal-footer">
